@@ -6,7 +6,7 @@
 /*   By: bavirgil <bavirgil@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 17:44:37 by bavirgil          #+#    #+#             */
-/*   Updated: 2025/08/07 22:51:46 by bavirgil         ###   ########.fr       */
+/*   Updated: 2025/08/08 20:36:53 by bavirgil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,24 @@ int	print_int(int n)
 		count += print_int(num / 10);
 	count += ft_putchar((num % 10) + '0');
 	return (count);
+}
+
+int	print_unsigned(unsigned int n)
+{
+	int		count;
+	char	c;
+
+	count = 0;
+	if (n == 0)
+		return (ft_putchar('0'));
+	if (n >= 10)
+		count += print_unsigned(n / 10);
+	c = '0' + (n % 10);
+	count += ft_putchar(c);
+	return (count);
+}
+
+int	print_percent(void)
+{
+	return (ft_putchar('%'));
 }
