@@ -17,19 +17,20 @@
 # include <stddef.h>
 # include <unistd.h>
 
-# if defined(__LINUX__)
-#  define PTRNULL "(nil)"
-# elif defined(__APPLE__)
+# ifdef __APPLE__
 #  define PTRNULL "0x0"
+# elif defined(__linux__)
+#  define PTRNULL "(nil)"
+# else
+#  define PTRNULL "(nil)"
 # endif
 
-// MAIN FILE
+// PRINTF FILE
 int	ft_printf(const char *format, ...);
-int	handle_format(char specifier, va_list args);
 
 // SIMPLE.C
 int	ft_putchar(char c);
-int	ft_putstr(char *s);
+int	ft_putstr(const char *s);
 int	print_int(int n);
 int	print_unsigned(unsigned int n);
 int	print_percent(void);

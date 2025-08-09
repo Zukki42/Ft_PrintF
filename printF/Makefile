@@ -12,7 +12,7 @@
 
 NAME = libftprintf.a
 
-SRCS = main.c simple.c complex.c
+SRCS = ft_printf.c simple.c complex.c
 OBJS = $(SRCS:.c=.o)
 
 CC = cc
