@@ -6,7 +6,7 @@
 #    By: bavirgil <bavirgil@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/07 17:45:30 by bavirgil          #+#    #+#              #
-#    Updated: 2025/08/07 17:52:24 by bavirgil         ###   ########.fr        #
+#    Updated: 2025/08/10 20:49:30 by bavirgil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,12 +18,12 @@ OBJS = $(SRCS:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-AR = ar rcs
+AR = ar -rcs
 RM = rm -f
 
 all : $(NAME)
 
-$(NAME) : $( OBJS )
+$(NAME) : $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 	
 clean: 

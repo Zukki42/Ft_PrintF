@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bavirgil <bavirgil@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 17:44:58 by bavirgil          #+#    #+#             */
-/*   Updated: 2025/08/07 17:45:00 by bavirgil         ###   ########.fr       */
+/*   Updated: 2025/08/10 21:52:17 by bavirgil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "ft_printf.h"
 
-/* 
+/*
 ** Chooses the right print function for each format specifier in ft_printf.
 */
-static int	handle_format(char sp, va_list ap)
+int	handle_format(char sp, va_list ap)
 {
 	if (sp == 'c')
 		return (ft_putchar((char)va_arg(ap, int)));
@@ -34,3 +35,39 @@ static int	handle_format(char sp, va_list ap)
 		return (print_percent());
 	return (ft_putchar('%') + ft_putchar(sp));
 }
+
+int	ft_printf(const char *string, ...)
+{
+	va_list	list;
+	int		count;
+	int		temp;
+	int		i;
+
+	va_start(list, string);
+	count = 0;
+	i = 0;
+	while (string[i])
+	{
+		temp = 0;
+		if (string[i] == '%' && string[i + 1] != '\0')
+			temp += handle_format(string[++i], list);
+		else
+			temp = ft_putchar(string[i]);
+		if (temp == -1)
+			return (-1);
+		count += temp;
+		i++;
+	}
+	va_end(list);
+	return (count);
+}
+
+// #include "stdio.h"
+// #include "unistd.h"
+
+// int	main(void)
+// {
+// 	int i = 0;
+// 	printf(":%d \n", printf("%p", NULL));
+// 	printf(":%d \n", ft_printf("%p", NULL));
+// }

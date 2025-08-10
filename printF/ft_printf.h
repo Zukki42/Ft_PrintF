@@ -6,7 +6,7 @@
 /*   By: bavirgil <bavirgil@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 17:45:33 by bavirgil          #+#    #+#             */
-/*   Updated: 2025/08/08 20:37:59 by bavirgil         ###   ########.fr       */
+/*   Updated: 2025/08/10 19:02:22 by bavirgil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 
 // PRINTF FILE
 int	ft_printf(const char *format, ...);
+int	handle_format(char sp, va_list ap);
 
 // SIMPLE.C
 int	ft_putchar(char c);

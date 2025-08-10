@@ -6,12 +6,11 @@
 /*   By: bavirgil <bavirgil@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 17:44:40 by bavirgil          #+#    #+#             */
-/*   Updated: 2025/08/08 20:55:43 by bavirgil         ###   ########.fr       */
+/*   Updated: 2025/08/10 21:44:04 by bavirgil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
 
 /*
 ** Convert and print an unsigned long long in lowercase hexadecimal.
@@ -20,16 +19,23 @@
 static int	print_hex_ptr(unsigned long long n)
 {
 	int		count;
+	int		temp;
 	char	c;
 
+	temp = 0;
 	count = 0;
 	if (n >= 16)
-		count += print_hex_ptr(n / 16);
+		temp += print_hex_ptr(n / 16);
+	if (temp == -1)
+		return (-1);
+	count += temp;
 	if ((n % 16) < 10)
 		c = (char)('0' + (n % 16));
 	else
 		c = (char)('a' + ((n % 16) - 10));
-	count += ft_putchar(c);
+	if (ft_putchar(c) == -1)
+		return (-1);
+	count++;
 	return (count);
 }
 
@@ -40,14 +46,22 @@ static int	print_hex_ptr(unsigned long long n)
 int	print_ptr(void *ptr)
 {
 	int					count;
+	int					temp;
 	unsigned long long	n;
 
 	if (ptr == NULL)
 		return (ft_putstr(PTRNULL));
+	temp = 0;
 	count = 0;
-	count += ft_putstr("0x");
+	temp = ft_putstr("0x");
+	if (temp == -1)
+		return (-1);
+	count += temp;
 	n = (unsigned long long)ptr;
-	count += print_hex_ptr(n);
+	temp = print_hex_ptr(n);
+	if (temp == -1)
+		return (-1);
+	count += temp;
 	return (count);
 }
 
@@ -58,21 +72,28 @@ int	print_ptr(void *ptr)
 int	print_hex(unsigned int n, int uppercase)
 {
 	int		count;
+	int		temp;
 	char	c;
 	char	base_a;
 
 	if (n == 0)
 		return (ft_putchar('0'));
 	count = 0;
+	temp = 0;
 	base_a = 'a';
 	if (uppercase)
 		base_a = 'A';
 	if (n >= 16)
-		count += print_hex(n / 16, uppercase);
+		temp = print_hex(n / 16, uppercase);
+	if (temp == -1)
+		return (-1);
+	count += temp;
 	if ((n % 16) < 10)
 		c = (char)('0' + (n % 16));
 	else
 		c = (char)(base_a + ((n % 16) - 10));
-	count += ft_putchar(c);
+	if (ft_putchar(c) == -1)
+		return (-1);
+	count++;
 	return (count);
 }
