@@ -41,9 +41,9 @@ make
 
 Other useful targets:
 
-make clean     # Remove object files
-make fclean    # Remove object files and library
-make re        # Rebuild everything from scratch
+- make clean     # Remove object files
+- make fclean    # Remove object files and library
+- make re        # Rebuild everything from scratch
 
 ---
 
@@ -51,10 +51,10 @@ make re        # Rebuild everything from scratch
 
 This project teaches you:
 
-How variadic arguments work in C (stdarg.h)
-How to parse and interpret format strings
-How to handle different data types dynamically
-How to write modular, reusable, and error-safe code
+- How variadic arguments work in C (stdarg.h)
+- How to parse and interpret format strings
+- How to handle different data types dynamically
+- How to write modular, reusable, and error-safe code
 
 In short , it’s the ultimate printf bootcamp.
 By the end, you’ll really understand what happens when you type printf("Hello %s!", name);
